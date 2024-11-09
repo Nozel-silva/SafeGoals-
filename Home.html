@@ -1,0 +1,356 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeGoals - Sports Betting AI</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <style> 
+         { 
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    
+    .navbar-logo{
+    color:lightgreen;
+    }
+    
+    
+    .fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+  margin-left:30px;
+}
+
+.fa:hover{
+opacity:0.7;
+}
+
+.fa-facebook {
+  background:  #3B5998;
+  color: white;
+  
+}
+.fa-twitter{
+background: midnightblue;
+  color: white;
+}
+
+.fa-instagram{
+background: salmon;
+  color: white;
+}
+
+/* Navbar container */
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        /* Navbar logo */
+        .navbar-logo {
+            color: lightgreen;
+            font-size: 24px;
+            text-decoration: none;
+        }
+
+        /* Hamburger menu styling */
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Links inside the menu */
+        .menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .menu li {
+            margin-left: 20px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+        }
+
+        /* Responsive hamburger menu for mobile */
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .menu {
+                position: absolute;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                background-color: #333;
+                flex-direction: column;
+                transition: left 0.3s ease;
+            }
+
+            .menu li {
+                margin: 0;
+            }
+
+            .menu a {
+                text-align: center;
+                padding: 15px;
+                border-top: 1px solid #444;
+            }
+
+            .menu.active {
+                left: 0;
+            }
+        }
+    
+    
+    
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #555;
+      height: 100%;
+    }
+    
+
+
+        body {
+            background-color: #121212;
+            color: #E0E0E0;
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #00E676;
+        }
+
+        p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+            color: #B0BEC5;
+        }
+
+        .container {
+            text-align: center;
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .container h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .container p {
+            margin-bottom: 40px;
+            font-size: 1.2rem;
+        }
+
+        /* Get Started Button */
+        .get-started-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-family: 'Orbitron', sans-serif;
+            text-decoration: none;
+            color: #121212;
+            background-color: #00E676;
+            border-radius: 30px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 230, 118, 0.3);
+        }
+
+        .get-started-btn:hover {
+            background-color: #00c853;
+            box-shadow: 0 6px 12px rgba(0, 230, 118, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .bg-div {
+            position: relative;
+            padding: 80px 30px;
+            color: white;
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            backdrop-filter: blur(5px);
+            opacity: 1;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        .bg-div h2 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 5px #000;
+        }
+
+        .bg-div p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        /* Background Images with Dark Overlay */
+        #div1 {
+            background-image: url('cp.jpg'); 
+            
+            background-color: rgba(0, 0, 0, 0.7);
+            background-blend-mode: overlay;
+        }
+
+        #div2 {
+            background-image: url('sf.jpg'); /* replace with your actual image */
+            background-color: rgba(0, 0, 0, 0.7);
+            background-blend-mode: overlay;
+        }
+
+        #div3 {
+            background-image: url('');
+            background-color: rgba(0, 0, 0, 0.7);
+            background-blend-mode: overlay;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Desktop Floating Animations */
+        @media(min-width: 768px) {
+            .bg-div:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        /* Mobile-specific Styles */
+        @media(max-width: 767px) {
+            .bg-div {
+                padding: 60px 20px;
+            }
+        }
+        
+        /* Bounce-in keyframes */
+    @keyframes bounceIn {
+        0% {
+            opacity: 0;
+            transform: scale(0.3);
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        70% {
+            transform: scale(0.9);
+        }
+        90% {
+            transform: scale(1.03);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .navbar-logo {
+        color: lightgreen;
+        font-size: 24px;
+        text-decoration: none;
+        animation: bounceIn 1s ease-in-out; /* Apply bounce-in animation */
+        
+        
+    </style>
+</head>
+<body>
+<div class="navbar">
+        <a href="#" class="navbar-logo">Safegoals⚽</a>
+        <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+        <ul class="menu">
+        <li><a href="#">Home</a></li>
+            <li><a href="www.safegoals.xyz/About.php">About</a></li>
+            <li><a href=" https://wa.me/2349016501345?text=Hello%2C%20I'm%20texting%20from%20SafeGoals%20Website">Contact</a></li>
+            <li><a href="Login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+    </div>
+
+
+
+
+    <!-- Header Section -->
+    <div class="container">
+        <h1> SafeGoals</h1>
+        <p>Your gateway to nailing sports betting predictions using advanced data-driven algorithms. Take your betting game to the next level with SafeGoals.</p>
+        <a href=" signup.html" class="get-started-btn">Get Started</a>
+    </div>
+
+    <!-- Section 1: Advanced Algorithms -->
+    <div id="div1" class="bg-div">
+        <h2>Advanced Algorithms</h2>
+        <p><i>No more Cut-one</i></p>
+            <p>Our advanced AI analyzes every detail, from player stats to team dynamics, giving you the edge to make selections like a pro.</p>
+    </div>
+
+    <!-- Section 2: Accurate Predictions -->
+    <div id="div2" class="bg-div">
+        <h2>Accurate Predictions</h2>
+        <p>Your secret weapon for accurate football predictions. Trust our AI, and see your winning streak soar!</p>
+    </div>
+
+    <!-- Section 3: Win Big -->
+    <div id="div3" class="bg-div">
+        <h2>Win Big</h2>
+        <p>Start your winning journey with SafeGoals now.</p>
+                <p><b>Sign Up/Sign In</b>, use our GSP tp clean your betslip.</p>
+    </div>
+<a href="https://m.facebook.com/story.php?story_fbid=pfbid08PtFWWTcYhfhzWWZivGLyHvgbxXbv3X5zyT8zrAnZqMk8rFRDQfeTfgr13pGTSyGl&id=61558062974719&mibextid=Nif5oz " class="fa fa-facebook"></a>
+    <a href=" https://x.com/safe_goals" class="fa fa-twitter"></a>
+    <a href=" https://www.instagram.com/p/C6GY_mhM5D0/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA" class="fa fa-instagram"></a>
+    
+</body>
+<script>
+        // Function to toggle the menu on small screens
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+</html>
