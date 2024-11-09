@@ -1,0 +1,201 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #333;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: lightgreen;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid lightgreen;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #444;
+            color: white;
+        }
+
+        input::placeholder {
+            color: #bbb;
+        }
+
+        input:focus {
+            border-color: white;
+            outline: none;
+        }
+
+        .terms {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: white;
+        }
+
+        .terms input {
+            margin-right: 10px;
+        }
+
+        .terms a {
+            color: lightgreen;
+            text-decoration: none;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        button {
+            padding: 12px;
+            background-color: lightgreen;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            text-align: center;
+            font-size: 14px;
+            color: lightgreen;
+            margin-top: 10px;
+        }
+
+        .login-link {
+            margin-top: 10px;
+            text-align: center;
+            color: lightgreen;
+        }
+
+        .login-link a {
+            color: lightgreen;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 100%;
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            button {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form action="Signup.php" method="POST" onsubmit="return validateForm()">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+
+            <!-- Terms and Conditions Checkbox -->
+            <div class="terms">
+                <input type="checkbox" id="terms" name="terms">
+                <label for="terms">
+                    I accept the <a href="terms.php" target="_blank">Terms and Conditions</a> and <a href="terms.php" target="_blank">Privacy Policy</a>.
+                </label>
+            </div>
+
+            <div class="error" id="error-message"></div>
+
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <p class="login-link">Already have an account? <a href="Login.php">Login here</a></p>
+
+        <p class="message"><?php echo $message; ?></p>
+    </div>
+
+    <script>
+        // JavaScript to validate the checkbox
+        function validateForm() {
+            var termsCheckbox = document.getElementById('terms');
+            var errorMessage = document.getElementById('error-message');
+
+            if (!termsCheckbox.checked) {
+                errorMessage.textContent = "You must accept the terms and conditions before signing up.";
+                return false;
+            }
+
+            return true;
+        }
+
+
+    </script>
+
+</body>
+</html>
